@@ -12,3 +12,18 @@ def eratosthenovo_sito(do):
         if sito[i]:
             prvocisla.append(i)
     return prvocisla
+
+def arkinov_test(p, k):
+    if p <= 1:
+        return "Cislo nie je prvocislo!"
+    if p <= 3:
+        return "Cislo je prvocislo!"
+
+    def kontrola(a, p):
+        return pow(a, p - 1, p) == 1
+
+    for _ in range(k):
+        a = random.randint(2, p - 1)
+        if not kontrola(a, p):
+            return "Cislo nie je prvocislo!"
+    return "Cislo je prvocislo!"
