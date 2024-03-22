@@ -30,18 +30,13 @@ def cislo():
     while True:
         try:
             cis_cislo = int(input("Zadajte cislo: "))
+            iteracie = int(input("Kolko iteracii ma byt prevedenych? "))
+            if (iteracie >= cis_cislo):
+                print(f"Maximalny pocet prevedenych iteracii bol: {cis_cislo - 1}.")
             print(Algoritmus.eratosthenovo_sito(cis_cislo))
-            print(je_prvocislo(cis_cislo))
+            print(Algoritmus.arkinov_test(cis_cislo, iteracie))
             break
         except ValueError:
-            print("Mimo si, skus este raz")
-
-def je_prvocislo(cislo):
-    if cislo <= 1:
-        return "Cislo nie je prvocislo!"
-    for i in range(2, int(cislo ** 0.5) + 1):
-        if cislo % i == 0:
-            return "Cislo nie je prvocislo!"
-    return "Zvolene cislo je prvocislo!"
+            print("Musite zadat cele cislo!")
 
 zvolenie()
