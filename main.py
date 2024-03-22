@@ -11,10 +11,10 @@ def zvolenie():
                 cislo()
                 break
             else:
-                print("Zle brasko/sestra")
+                print("Zadane cislo musi byt 1 alebo 2!")
             zvolenie()
         except ValueError:
-            print("Mimo si, skus este raz")
+            print("Musite zadat cele cislo!")
 
 def bity():
     while True:
@@ -24,7 +24,7 @@ def bity():
             print(Algoritmus.eratosthenovo_sito(bit_cislo))
             break
         except ValueError:
-            print("Mimo si, skus este raz")
+            print("Musite zadat cele cislo!")
 
 def cislo():
     while True:
