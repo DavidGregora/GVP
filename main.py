@@ -30,8 +30,8 @@ def cislo():
     while True:
         try:
             cis_cislo = int(input("Zadajte cislo: "))
-            print(je_prvocislo(cis_cislo))
             print(Algoritmus.eratosthenovo_sito(cis_cislo))
+            print(je_prvocislo(cis_cislo))
             break
         except ValueError:
             print("Mimo si, skus este raz")
