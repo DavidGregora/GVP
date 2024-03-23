@@ -1,3 +1,5 @@
+import random
+
 def eratosthenovo_sito(do):
     do += 1
     sito = [True] * do
@@ -12,6 +14,12 @@ def eratosthenovo_sito(do):
         if sito[i]:
             prvocisla.append(i)
     return prvocisla
+
+def najblizsie_mensie_prvocislo(cislo):
+    prvocisla = eratosthenovo_sito(cislo)
+    for p in reversed(prvocisla):
+        if p <= cislo:
+            return p
 
 def arkinov_test(p, k):
     if p <= 1:
