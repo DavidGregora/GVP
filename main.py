@@ -11,10 +11,10 @@ def zvolenie():
                 cislo()
                 break
             else:
-                print("Zadane cislo musi byt 1 alebo 2!")
+                print("Musite zadat 1 alebo 2!")
             zvolenie()
         except ValueError:
-            print("Musite zadat cele cislo!")
+            print("Musite zadat 1 alebo 2!")
 
 def bity():
     while True:
@@ -22,6 +22,8 @@ def bity():
             bitova_dlzka = int(input("Kolko bitov ma mat cislo: "))
             bit_cislo = 2 ** bitova_dlzka
             print(Algoritmus.eratosthenovo_sito(bit_cislo))
+            najblizsie_prvocislo = Algoritmus.najblizsie_mensie_prvocislo(bit_cislo)
+            print("Najvacsie prvocislo je:", najblizsie_prvocislo)
             break
         except ValueError:
             print("Musite zadat cele cislo!")
@@ -35,8 +37,12 @@ def cislo():
                 print(f"Maximalny pocet prevedenych iteracii bol: {cis_cislo - 1}.")
             print(Algoritmus.eratosthenovo_sito(cis_cislo))
             print(Algoritmus.arkinov_test(cis_cislo, iteracie))
+            if (Algoritmus.arkinov_test(cis_cislo, iteracie) == "Cislo nie je prvocislo!" and cis_cislo > 1):
+                najblizsie_prvocislo = Algoritmus.najblizsie_mensie_prvocislo(cis_cislo)
+                print("Najbližšie menšie prvočíslo k číslu", cis_cislo, "je", najblizsie_prvocislo)
             break
         except ValueError:
             print("Musite zadat cele cislo!")
+
 
 zvolenie()
