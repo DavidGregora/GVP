@@ -1,49 +1,49 @@
 import random
 
-def mocnina(x, y, p):
+def mocnina(x, y, p): #funkcia pro vypocet x^y mod p
     res = 1
     x = x % p
     while y > 0:
-        if y & 1:
-            res = (res * x) % p
-        y = y >> 1
-        x = (x * x) % p
+        if y & 1: #testuje ci je y neparne
+            res = (res * x) % p #ak ano, vypocita x^y modulo p
+        y = y >> 1 #posun exponentu o jednu pozicu doprava
+        x = (x * x) % p #vypocita x^2 modulo p
     return res
 
-def miller_rabin(d, n):
-    a = 2 + random.randint(1, n - 4)
-    x = mocnina(a, d, n)
-    if x == 1 or x == n - 1:
+def miller_rabin(d, n):     #implementacia miller-rabinovovho testu prvociselnosti, navratova hodnota je bool: true, ak je n pravdepodobne prvocislo, inak false
+    a = 2 + random.randint(1, n - 4) #nahodne zvolena hodnota pre test
+    x = mocnina(a, d, n) #vypocita a^d modulo n
+    if x == 1 or x == n - 1: #testuje podmienky prvociselnosti
         return True
     while d != n - 1:
-        x = (x * x) % n
-        d *= 2
-        if x == 1:
+        x = (x * x) % n #opakovane umocnovanie a modulo n
+        d *= 2 #zvacsenie exponentu
+        if x == 1: #cislo nie je prvocislo
             return False
-        if x == n - 1:
+        if x == n - 1: #test podmienok pre prvociselnost
             return True
     return False
 
-def je_prvocislo(n, k):
-    if n <= 1 or n == 4:
+def je_prvocislo(n, k): #urci, ci je zadane cislo prvocislo pomocou miller-rabinovho testu, navratova hodnota tiez bool
+    if n <= 1 or n == 4: #kontrola zakladnych podmienok
         return False
     if n <= 3:
         return True
-    d = n - 1
-    while d % 2 == 0:
-        d //= 2
-    for _ in range(k):
-        if not miller_rabin(d, n):
+    d = n - 1 #toto robime preto, lebo prevedenie miller-rabinovho testu vyzaduje, aby cislo n-1 bolo nejakym sposobom prevedene na neparne cislo
+    while d % 2 == 0: #ak je d parne
+        d //= 2 #celociselne delenie d dvomi, priradi vysledok naspat do premennej d, opakujeme a tym znizujeme d az na neparne cislo, tym zistime ci je vysledne cislo prvocislo
+    for _ in range(k): #opakovanie testu k-krat
+        if not miller_rabin(d, n): #pouzitie miller-rabinovho testu
             return False
     return True
 
-def vypis_prvocisla(do_cisla, k):
+def vypis_prvocisla(do_cisla, k): #funkcia pre vypis vsetkych prvocisiel do zadaneho cisla
     print("Prvočísla do", do_cisla, ":")
     for i in range(2, do_cisla + 1):
         if je_prvocislo(i, k):
             print(i, end=" ")
 
-def testovanie_prvocisla(cislo, k):
+def testovanie_prvocisla(cislo, k): #funkcia pre otestovanie, ci je zadane cislo prvocislo
     if je_prvocislo(cislo, k):
         print(cislo, "je prvočíslo.")
     else:
