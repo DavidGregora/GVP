@@ -1,6 +1,6 @@
 import Algoritmus
 
-def zvolenie():
+def zvolenie():    #funkcia na zvolenie, co chceme urobit
     while True:
         try:
             volba = int(input("Pre bitovu dlzku zadajte 1, pre cislo 2: "))
@@ -16,7 +16,7 @@ def zvolenie():
         except ValueError:
             print("Musite zadat 1 alebo 2!")
 
-def bity():
+def bity():    #funkcia, na vyratanie prvocisla na zaklade zadania poctu bitov
     while True:
         try:
             bitova_dlzka = int(input("Kolko bitov ma mat cislo: "))
@@ -28,7 +28,7 @@ def bity():
         except ValueError:
             print("Musite zadat cele cislo!")
 
-def cislo():
+def cislo():    #funkcia, ktora zisti, ci je cislo prvocislo
     while True:
         try:
             cis_cislo = int(input("Zadajte cislo: "))
@@ -37,7 +37,7 @@ def cislo():
                 print(f"Maximalny pocet prevedenych iteracii bol: {cis_cislo - 1}.")
             print(Algoritmus.eratosthenovo_sito(cis_cislo))
             print(Algoritmus.arkinov_test(cis_cislo, iteracie))
-            if (Algoritmus.arkinov_test(cis_cislo, iteracie) == "Cislo nie je prvocislo!" and cis_cislo > 1):
+            if (Algoritmus.arkinov_test(cis_cislo, iteracie) == "Cislo nie je prvocislo!" and cis_cislo > 1):  #ak cislo nie je prvocislo, tak vypise najblizsie prvocislo k tomu
                 najblizsie_prvocislo = Algoritmus.najblizsie_mensie_prvocislo(cis_cislo)
                 print("Najbližšie menšie prvočíslo k číslu", cis_cislo, "je", najblizsie_prvocislo)
             break
