@@ -1,6 +1,6 @@
 import random
 
-def eratosthenovo_sito(do):
+def eratosthenovo_sito(do): #algoritmus na eratosthenovo sito (z internetu)
     do += 1
     sito = [True] * do
 
@@ -15,13 +15,13 @@ def eratosthenovo_sito(do):
             prvocisla.append(i)
     return prvocisla
 
-def najblizsie_mensie_prvocislo(cislo):
+def najblizsie_mensie_prvocislo(cislo): #algoritmus na zistenie najlbizsieho mensieho prvocisla po generovani, ak zadane nie je
     prvocisla = eratosthenovo_sito(cislo)
     for p in reversed(prvocisla):
         if p <= cislo:
             return p
 
-def arkinov_test(p, k):
+def arkinov_test(p, k):  #test prvociselnosti 2
     if p <= 1:
         return "Cislo nie je prvocislo!"
     if p <= 3:
