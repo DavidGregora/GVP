@@ -87,3 +87,5 @@ def generate_prime():
 '''
 main()
 # generate_prime()
+
+# Hlavny zdroj: https://faculty.lynchburg.edu/~nicely/misc/bpsw.html
